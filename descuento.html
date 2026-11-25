@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descuento</title>
+</head>
+
+<body>
+    <script>
+        function calcularDescuento(precioOriginal, porcentajeDescuento) {
+            let descuento = (precioOriginal * porcentajeDescuento) / 100;
+            let precioFinal = precioOriginal - descuento;
+            return precioFinal;
+        }
+
+        function mostrarPrecio(precioOriginal, porcentajeDescuento, precioFinal) {
+            console.log('Precio original: ' + precioOriginal);
+            console.log('Descuento aplicado: ' + porcentajeDescuento + '%');
+            console.log('Precio final: ' + precioFinal);
+        }
+
+        let precioFinalProducto1 = calcularDescuento(20000, 15);
+        mostrarPrecio(20000, 15, precioFinalProducto1);
+
+        let precioFinalProducto2 = calcularDescuento(15000, 10);
+        mostrarPrecio(15000, 10, precioFinalProducto2);
+
+        let precioFinalProducto3 = calcularDescuento(10000, 5);
+        mostrarPrecio(10000, 5, precioFinalProducto3);
+    </script>
+</body>
+</html>
