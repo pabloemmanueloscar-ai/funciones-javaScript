@@ -30,7 +30,7 @@ Por ejemplo, si se ingresa `5` como número y `5` como límite, la consola muest
 
 `numero` y `limite` son parámetros de `generarTabla`; los valores solicitados al usuario son los argumentos. La función muestra cada operación en la consola.
 
-### Detalle a mejorar
+### Validación de datos
 
 La validación también rechaza entradas canceladas, decimales, cero y números negativos. Así se evita iniciar la tabla con valores inválidos.
 
@@ -42,7 +42,7 @@ Solicita una contraseña de hasta tres veces y considera válida cualquier entra
 
 ### ¿Cómo funciona?
 
-- `validarPassword(password)` recibe el texto ingresado.
+- `validarPassword(password)` recibe el texto ingresado y utiliza condicionales para decidir si cumple el requisito.
 - Si el usuario cancela el cuadro de diálogo, `prompt()` devuelve `null`; la función lo considera inválido.
 - Si la contraseña tiene ocho caracteres o más, devuelve `true`. En caso contrario, devuelve `false`.
 - El ciclo `while` repite la solicitud mientras queden intentos y no se haya validado una contraseña.
