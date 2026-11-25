@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<html lang="es
-<head>
-    <meta charset=" UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contraseña
-    </head>
-
-    <body>
-      <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -17,37 +8,27 @@
 <body>
     <script>
         function validarPassword(password) {
-            if (password === null) {
-                return false;
-            }
-
-            if (password.length >= 8) {
-                return true;
-            } else {
-                return false;
-            }
+            return password !== null && password.length >= 8;
         }
 
         let intentos = 0;
         let passwordValida = false;
 
-        while (intentos < 3 && passwordValida === false) {
+        while (intentos < 3 && !passwordValida) {
             let password = prompt('Ingrese una contraseña de al menos 8 caracteres:');
-            intentos = intentos + 1;
+            intentos++;
             passwordValida = validarPassword(password);
 
-            if (passwordValida === true) {
+            if (passwordValida) {
                 console.log('La contraseña es válida.');
             } else {
-                console.log('La contraseña no es válida.');
+                console.log('La contraseña no cumple los requisitos. Debe contener al menos 8 caracteres.');
             }
         }
 
-        if (passwordValida === false) {
+        if (!passwordValida) {
             console.log('Se agotaron los tres intentos.');
         }
     </script>
 </body>
 </html>
-</body >
-</html >

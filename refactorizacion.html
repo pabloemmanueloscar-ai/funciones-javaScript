@@ -11,8 +11,9 @@
         return precio * cantidad;
     }
 
-    const aplicarDescuento = (subtotal, porcentajeDescuento) =>
-        subtotal - (subtotal * porcentajeDescuento / 100);
+    const aplicarDescuento = (subtotal, porcentajeDescuento) => {
+        return subtotal - (subtotal * porcentajeDescuento / 100);
+    };
 
     function mostrarVenta(producto, subtotal, total) {
         console.log("Producto: " + producto);

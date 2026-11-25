@@ -6,7 +6,7 @@ Este directorio contiene cuatro ejercicios HTML que ejecutan JavaScript en el na
 
 | Archivo | Propósito | Conceptos principales |
 |---|---|---|
-| [calculadora.html](./calculadora.html) | Mostrar tablas de multiplicar de números ingresados por el usuario. | Funciones, parámetros, ciclos `while`, `prompt()` |
+| [calculadora.html](./calculadora.html) | Generar la tabla de un número hasta el límite elegido. | Funciones, parámetros, ciclo `for`, validación, `prompt()` |
 | [contrseña.html](./contrse%C3%B1a.html) | Validar una contraseña con hasta tres intentos. | Funciones, `return`, condicionales, ciclos, valores `true` y `false` |
 | [descuento.html](./descuento.html) | Calcular el precio final de tres productos con distintos descuentos. | Funciones, parámetros, `return`, reutilización |
 | [refactorizacion.html](./refactorizacion.html) | Calcular y mostrar ventas mediante funciones reutilizables. | Refactorización, principio DRY, parámetros, retorno y funciones flecha |
@@ -15,26 +15,24 @@ Este directorio contiene cuatro ejercicios HTML que ejecutan JavaScript en el na
 
 ### ¿Qué hace?
 
-Primero pregunta cuántos números se quieren procesar. Luego solicita cada número y muestra su tabla de multiplicar desde el 1 hasta el 10.
+Solicita un número y un límite de multiplicación. Si ambos son enteros positivos, genera la tabla desde el 1 hasta ese límite.
 
 ### ¿Cómo funciona?
 
-- `pedirNumeros()` solicita la cantidad de números y controla cuántas veces se repite el proceso.
-- En cada repetición pide un número y llama a `tablaMultiplicar(num)`.
-- `tablaMultiplicar(num)` recibe ese número y usa un ciclo `while` para mostrar las diez multiplicaciones.
-- El ciclo incrementa `i` en cada vuelta y termina cuando `i` supera 10.
+- `validarNumero(valor)` comprueba que el dato sea un entero positivo mediante `Number.isInteger()` y una comparación con cero.
+- El programa solicita con `prompt()` el número de la tabla y el límite, y convierte ambas entradas a números con `Number()`.
+- `generarTabla(numero, limite)` recibe esos valores y utiliza un ciclo `for` para mostrar cada multiplicación.
+- Si alguno de los datos no es un entero positivo, muestra un error y no genera la tabla.
 
-Por ejemplo, si se ingresa `7`, la consola muestra operaciones desde `7 x 1 = 7` hasta `7 x 10 = 70`.
-
-Si se ingresa `2` como cantidad y luego los números `7` y `4`, el programa muestra dos tablas: primero la del 7 y después la del 4.
+Por ejemplo, si se ingresa `5` como número y `5` como límite, la consola muestra desde `5 x 1 = 5` hasta `5 x 5 = 25`.
 
 ### Conceptos para reconocer
 
-`num` es un parámetro de `tablaMultiplicar`; el valor ingresado por el usuario es el argumento. En este ejercicio la función muestra cada resultado, pero no devuelve un resultado con `return`.
+`numero` y `limite` son parámetros de `generarTabla`; los valores solicitados al usuario son los argumentos. La función muestra cada operación en la consola.
 
 ### Detalle a mejorar
 
-`limite` y `num` se asignan sin declararse con `let` o `const`, por lo que pasan a ser variables globales. También el documento indica `lang="en"` aunque los mensajes están en español. Son mejoras posibles, no cambios realizados en este ejercicio.
+La validación también rechaza entradas canceladas, decimales, cero y números negativos. Así se evita iniciar la tabla con valores inválidos.
 
 ## 2. Validación de contraseña — `contrseña.html`
 
@@ -48,7 +46,7 @@ Solicita una contraseña de hasta tres veces y considera válida cualquier entra
 - Si el usuario cancela el cuadro de diálogo, `prompt()` devuelve `null`; la función lo considera inválido.
 - Si la contraseña tiene ocho caracteres o más, devuelve `true`. En caso contrario, devuelve `false`.
 - El ciclo `while` repite la solicitud mientras queden intentos y no se haya validado una contraseña.
-- Después de cada intento se muestra el resultado. Al final se informa si se agotaron los tres intentos.
+- Después de cada intento se muestra el resultado; si es inválida, se recuerda el requisito de ocho caracteres. Al final se informa si se agotaron los tres intentos.
 
 La función devuelve un valor con `return`; el ciclo usa ese valor para decidir si debe continuar. Esto ejemplifica cómo una función puede validar un dato y comunicar el resultado al resto del programa.
 
@@ -61,10 +59,6 @@ La única regla implementada es la longitud mínima. No se comprueba si hay núm
 - Ingresar `abc12345` devuelve `true` porque tiene ocho caracteres; se muestra que la contraseña es válida.
 - Ingresar `casa` devuelve `false` porque tiene menos de ocho caracteres; se muestra que no es válida y se permite otro intento.
 - Cancelar el cuadro también se considera un intento inválido. Si no se ingresa una contraseña válida en tres intentos, se informa que se agotaron.
-
-### Detalle a revisar
-
-El archivo contiene etiquetas HTML duplicadas y algunas etiquetas iniciales incompletas antes de la estructura principal del documento. Los navegadores pueden intentar corregirlas al mostrar la página, pero convendría limpiar esa estructura si se trabaja luego en la validez del HTML.
 
 ## 3. Cálculo de descuentos — `descuento.html`
 
@@ -107,7 +101,7 @@ Las variables `subtotal` y `total` de `calcularVenta()` son locales; se utilizan
 
 La lista contiene los datos de cada producto y `forEach()` recorre sus elementos. Para agregar otro producto basta con añadir sus datos a la lista: se reutilizan las mismas funciones sin duplicar la lógica de cálculo.
 
-`aplicarDescuento()` utiliza retorno implícito: al ser una función flecha con una sola expresión, JavaScript devuelve el resultado automáticamente. Si la consigna exige la palabra `return` escrita de forma explícita en ambas funciones de cálculo, se puede escribir esa función flecha con llaves y `return`.
+`aplicarDescuento()` está escrita como función flecha con llaves y `return` explícito. Así, las dos funciones de cálculo devuelven sus resultados usando `return`, tal como pide la consigna.
 
 ### Resultados
 

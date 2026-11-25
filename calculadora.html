@@ -1,39 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Generador de tablas de multiplicar</title>
 </head>
-
 <body>
     <script>
+        function validarNumero(valor) {
+            return Number.isInteger(valor) && valor > 0;
+        }
 
-        function tablaMultiplicar(num) {
-            let i = 1
-            while (i <= 10) {
-                console.log(num + ' x ' + i + ' = ' + num * i)
-                i++
+        function generarTabla(numero, limite) {
+            for (let multiplicador = 1; multiplicador <= limite; multiplicador++) {
+                console.log(numero + ' x ' + multiplicador + ' = ' + numero * multiplicador);
             }
         }
 
-        function pedirNumeros() {
-            limite = Number(prompt('Ingrese la cantidad de nros a multiplicar'))
-            let i = 1
-            while (i <= limite) {
-                num = Number(prompt('Ingrese un nro para multiplicar'))
-                tablaMultiplicar(num)
-                i++
-            }
+        const numero = Number(prompt('Ingrese el numero para generar su tabla:'));
+        const limite = Number(prompt('Ingrese hasta que numero desea multiplicar:'));
+
+        if (validarNumero(numero) && validarNumero(limite)) {
+            generarTabla(numero, limite);
+        } else {
+            console.log('Error: ambos valores deben ser numeros enteros positivos.');
         }
-pedirNumeros()
-
-
-
-
-
     </script>
 </body>
-
 </html>
