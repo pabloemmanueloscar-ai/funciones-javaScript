@@ -19,7 +19,7 @@ Solicita un número y un límite de multiplicación. Si ambos son enteros positi
 
 ### ¿Cómo funciona?
 
-- `validarNumero(valor)` comprueba que el dato sea un entero positivo mediante `Number.isInteger()` y una comparación con cero.
+- `validarNumero(valor)` comprueba que el dato sea positivo y que el resto de dividirlo por 1 sea cero; así verifica que sea un entero.
 - El programa solicita con `prompt()` el número de la tabla y el límite, y convierte ambas entradas a números con `Number()`.
 - `generarTabla(numero, limite)` recibe esos valores y utiliza un ciclo `for` para mostrar cada multiplicación.
 - Si alguno de los datos no es un entero positivo, muestra un error y no genera la tabla.
@@ -86,7 +86,7 @@ Las funciones reciben datos mediante parámetros. `calcularDescuento()` devuelve
 
 ### ¿Qué hace?
 
-Calcula el subtotal y el total con descuento de cada producto y muestra el nombre, el subtotal y el total. Los productos están organizados en una lista llamada `ventas`.
+Calcula el subtotal y el total con descuento de cada producto y muestra el nombre, el subtotal y el total. Cada producto se procesa mediante una llamada a `calcularVenta()`.
 
 ### Funciones y responsabilidades
 
@@ -99,7 +99,7 @@ Las variables `subtotal` y `total` de `calcularVenta()` son locales; se utilizan
 
 ### Reutilización y principio DRY
 
-La lista contiene los datos de cada producto y `forEach()` recorre sus elementos. Para agregar otro producto basta con añadir sus datos a la lista: se reutilizan las mismas funciones sin duplicar la lógica de cálculo.
+El programa llama a `calcularVenta()` una vez por producto y reutiliza las mismas funciones. Para agregar otro producto, basta con hacer otra llamada con sus datos; no se vuelve a escribir la lógica de cálculo.
 
 `aplicarDescuento()` está escrita como función flecha con llaves y `return` explícito. Así, las dos funciones de cálculo devuelven sus resultados usando `return`, tal como pide la consigna.
 

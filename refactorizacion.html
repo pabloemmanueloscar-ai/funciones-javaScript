@@ -22,20 +22,14 @@
     }
 
     function calcularVenta(producto, precio, cantidad, porcentajeDescuento) {
-        const subtotal = calcularSubtotal(precio, cantidad);
-        const total = aplicarDescuento(subtotal, porcentajeDescuento);
+        let subtotal = calcularSubtotal(precio, cantidad);
+        let total = aplicarDescuento(subtotal, porcentajeDescuento);
         mostrarVenta(producto, subtotal, total);
     }
 
-    const ventas = [
-        { producto: "Teclado", precio: 25000, cantidad: 2 },
-        { producto: "Mouse", precio: 15000, cantidad: 3 },
-        { producto: "Auriculares", precio: 20000, cantidad: 1 }
-    ];
-
-    ventas.forEach(({ producto, precio, cantidad }) =>
-        calcularVenta(producto, precio, cantidad, 10)
-    );
+    calcularVenta("Teclado", 25000, 2, 10);
+    calcularVenta("Mouse", 15000, 3, 10);
+    calcularVenta("Auriculares", 20000, 1, 10);
     </script>
 
         <section aria-labelledby="anotaciones-title">
